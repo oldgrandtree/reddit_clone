@@ -1,0 +1,20 @@
+<form action="<%= sub.form_url %>" method="post">
+  <% if sub.persisted? %>
+    <input type="hidden" name="_method" value="put">
+    
+  <% end %>
+  
+  <%= render "shared/auth" %>
+  
+  <label>
+    Title
+    <input type="text" name="sub[title]" value="<%= sub.title %>">
+  </label>
+  
+  <label>
+    Description
+    <input type="textarea" name="sub[description]" value="<%= sub.description %>">
+  </label>
+  
+  <input type="submit" value="<%= sub.submit %>">
+</form>

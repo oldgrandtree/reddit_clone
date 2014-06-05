@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   validates :token, presence: true, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
   
+  has_many :subs, foreign_key: :moderator_id, inverse_of: :moderator
+  
   def is_password?(password)
     BCrypt::Password.new(password_digest).is_password?(password)
   end

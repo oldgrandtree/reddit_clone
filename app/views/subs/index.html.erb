@@ -1,0 +1,15 @@
+<h1>Subs</h1>
+
+<ul>
+  <% @subs.each do |sub| %>
+    <li>
+      <%= link_to sub.title, sub_url(sub) %>
+      <br>
+      <%= sub.description %>
+      <% if is_moderator?(sub) %>
+        <br>
+        <%= link_to "Edit this Sub", edit_sub_url(sub) %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

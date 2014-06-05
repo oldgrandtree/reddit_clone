@@ -13,6 +13,8 @@
   <% if signed_in? %>
     <%= current_user.username %>
     <%= button_to "Sign Out", session_url, method: :delete %>
+    <%= link_to "Create Your Own Sub", new_sub_url %>
+    <%= link_to "Subs", subs_url %>
   <% else %>
     <%= render "layouts/user_form", action: session_url, submit: "Sign in" %>
     <%= render "layouts/user_form", action: users_url, submit: "Sign Up" %>

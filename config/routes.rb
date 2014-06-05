@@ -1,11 +1,13 @@
 RedditClone::Application.routes.draw do
-  
+
   root to: 'frontpages#show'
   get "/" => "frontpages#show"
   
   resources :users, except: [:index]
   
   resource :session, only: [:create, :destroy]
+  
+  resources :subs
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
