@@ -36,6 +36,8 @@ gem 'bcrypt'
 
 gem 'draper'
 
+gem 'launchy'
+
 group :development do
   gem 'annotate'
   gem 'better_errors'

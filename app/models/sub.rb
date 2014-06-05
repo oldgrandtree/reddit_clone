@@ -8,4 +8,5 @@ class Sub < ActiveRecord::Base
     foreign_key: :moderator_id, 
     inverse_of: :subs
   )
+  has_many :posts, inverse_of: :sub
 end

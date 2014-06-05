@@ -1,6 +1,7 @@
 class SubsController < ApplicationController
   
   before_action :ensure_moderator, only: [:edit, :update, :destroy]
+  before_action :ensure_signed_in, only: [:create, :new]
   
   helper_method :is_moderator?
   
@@ -10,6 +11,7 @@ class SubsController < ApplicationController
   
   def show
     @sub = Sub.find(params[:id])
+    @posts = @sub.posts.decorate
   end
   
   def edit
@@ -50,7 +52,10 @@ class SubsController < ApplicationController
   
   def ensure_moderator
     @sub = Sub.find(params[:id])
-    is_moderator?(@sub)
+    unless is_moderator?(@sub)
+      flash[:errors] = ["You ain't da moderator"]
+      redirect_to root_url
+    end
   end
   
   def is_moderator?(sub)

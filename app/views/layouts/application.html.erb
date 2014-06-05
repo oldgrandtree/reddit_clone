@@ -10,6 +10,7 @@
 
   <%= render "shared/errors" %>
 
+  <%= link_to "Front Page", root_url %>
   <% if signed_in? %>
     <%= current_user.username %>
     <%= button_to "Sign Out", session_url, method: :delete %>

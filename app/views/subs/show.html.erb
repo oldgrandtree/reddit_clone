@@ -2,5 +2,10 @@
 
 <p><%= @sub.description %></p>
 
+<% @posts.each do |post| %>
+<h2><%= link_to post.title, post.link %></h2>
+<%= link_to "comments", post_url(post) %>
+<% end %>
 
 
+<%= (link_to "Create Post", new_sub_post_url(@sub)) if signed_in? %>

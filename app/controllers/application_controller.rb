@@ -24,4 +24,11 @@ class ApplicationController < ActionController::Base
     current_user.try(:reset_token!)
     session[:token] = nil
   end  
+  
+  def ensure_signed_in 
+    unless signed_in?
+      flash[:errors] = ["You must be signed in!"]
+      redirect_to root_url
+    end
+  end
 end

@@ -7,7 +7,11 @@ RedditClone::Application.routes.draw do
   
   resource :session, only: [:create, :destroy]
   
-  resources :subs
+  shallow do 
+    resources :subs do
+      resources :posts
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
