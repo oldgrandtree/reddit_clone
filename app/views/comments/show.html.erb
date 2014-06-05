@@ -1,0 +1,10 @@
+<h1><a href="<%= @comment.link %>"><%= @comment.title %></a></h1>
+
+<p><%= @comment.content %></p>
+
+  <% if is_authorized?(@comment) %>
+    <br>
+    <%= link_to "Edit this Post", edit_comment_url(@comment) %>
+  <% end %>
+
+<h2>Comments</h2>

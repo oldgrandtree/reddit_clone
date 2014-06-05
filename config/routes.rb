@@ -6,10 +6,14 @@ RedditClone::Application.routes.draw do
   resources :users, except: [:index]
   
   resource :session, only: [:create, :destroy]
-  
+
   shallow do 
     resources :subs do
-      resources :posts
+      resources :posts do 
+        resources :comments do
+          resources :comments
+        end
+      end
     end
   end
 

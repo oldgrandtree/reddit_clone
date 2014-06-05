@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
   def ensure_signed_in 
     unless signed_in?
       flash[:errors] = ["You must be signed in!"]
-      redirect_to root_url
+      redirect_to :back
     end
   end
 end

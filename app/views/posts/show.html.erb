@@ -1,0 +1,22 @@
+<h1><a href="<%= @post.link %>"><%= @post.title %></a></h1>
+
+<p><%= @post.content %></p>
+
+  <% if is_authorized?(@post) %>
+    <br>
+    <%= link_to "Edit this Post", edit_post_url(@post) %>
+  <% end %>
+
+<h3>Add Top-Level Comment</h3>
+
+<form action="<%= post_comments_url(@post) %>", method="post">
+  <%= render "shared/auth" %>
+  <input type="textarea" name="comment[content]">
+  <input type="submit" value="add comment">
+</form>
+
+<h2>Comments</h2>
+
+<% @post.top_level_comments.each do |top_level_comment| %>
+  <%= render "comment2", comment: top_level_comment %>
+<% end %>

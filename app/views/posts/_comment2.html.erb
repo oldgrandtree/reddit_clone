@@ -1,0 +1,11 @@
+<li>
+<%= comment.content %>
+<%= link_to "Edit Comment", edit_comment_url(comment) if is_authorized?(comment)%>
+<%= link_to "Add Comment", new_comment_comment_url(comment) %>
+
+<ul>
+<% comment.child_comments.each do |child| %>
+  <%= render "comment2", comment: child %>
+<% end %>
+</ul>
+</li>

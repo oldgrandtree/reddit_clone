@@ -8,6 +8,11 @@ class User < ActiveRecord::Base
   
   has_many :subs, foreign_key: :moderator_id, inverse_of: :moderator
   has_many :posts, foreign_key: :submitter_id, inverse_of: :submitter
+  has_many( 
+    :comments,  
+    foreign_key: :submitter_id, 
+    inverse_of: :submitter
+  )
   
   def is_password?(password)
     BCrypt::Password.new(password_digest).is_password?(password)

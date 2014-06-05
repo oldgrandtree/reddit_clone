@@ -1,0 +1,15 @@
+<form action="<%= comment.form_url %>" method="post">
+  <% if comment.persisted? %>
+    <input type="hidden" name="_method" value="put">
+    
+  <% end %>
+  
+  <%= render "shared/auth" %>
+  
+  <label>
+    Content
+    <input type="textarea" name="comment[content]" value="<%= comment.content %>">
+  </label>
+  
+  <input type="submit" value="<%= comment.submit %>">
+</form>
